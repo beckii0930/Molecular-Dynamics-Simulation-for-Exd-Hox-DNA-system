@@ -1,0 +1,42 @@
+title                    = 2r5z_protonated_softcore
+cpp                      = /lib/cpp
+;define                   = -DPOSRES
+integrator               = steep    
+emtol                    = 10.
+emstep                   =0.1
+tinit                    = 00000.
+;dt                       = 0.002 
+nsteps                   = 20000 
+nstxout                  = 50
+nstvout                  = 50
+nstlog                   = 10
+nstenergy                = 10
+nstxtcout                = 0
+pbc                      = xyz  
+rlist                    = 1.20
+coulombtype              = PME             
+r_coulomb                = 1.20
+ewald_geometry           = 3d
+ewald_rtol               = 1e-6
+vdw-type                 = switch
+rvdw-switch              = 0.90
+rvdw                     = 1.20
+
+
+
+;--------------------
+; Free energy parameters
+free-energy              = yes
+init-lambda              = 0.01
+sc-alpha                 = 4
+sc-power                 = 2
+sc-coul                  = yes
+nstdhdl                  = 0 
+
+couple-moltype           = system
+; we are changing both the  vdw and the charge.  In the initial state, both are on
+couple-lambda0           = vdw-q
+; in the final state, both are off.
+couple-lambda1           = none
+couple-intramol          = yes
+
